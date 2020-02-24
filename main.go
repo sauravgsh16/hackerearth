@@ -4,86 +4,75 @@ import (
 	"fmt"
 )
 
-type stack struct {
-	d []int
+type fooBar struct {
+	foo   string
+	bar   string
+	barCh chan bool
+	fooCh chan bool
+	done  chan bool
 }
 
-func (s *stack) push(i int) {
-	s.d = append(s.d, i)
-}
+func (f *fooBar) outBar() {
+	go func() {
+		for {
+			select {
+			case <-f.barCh:
+				fmt.Printf("%s\n", f.bar)
+				select {
+				case f.fooCh <- true:
+				}
 
-func (s *stack) pop() int {
-	i := s.d[len(s.d)-1]
-	s.d = s.d[:len(s.d)-1]
-	return i
-}
-
-func (s *stack) isEmpty() bool {
-	return len(s.d) == 0
-}
-
-func (s *stack) top() int {
-	return s.d[len(s.d)-1]
-}
-
-func nextElement(arr []int, order string) []int {
-	s := &stack{}
-	ans := make([]int, len(arr))
-
-	for i := len(arr) - 1; i >= 0; i-- {
-
-		if order == "G" {
-
-			for !s.isEmpty() && arr[s.top()] <= arr[i] {
-				s.pop()
+			case <-f.done:
+				fmt.Println("breaking bar")
+				break
 			}
+		}
+	}()
+}
 
-		} else {
-
-			for !s.isEmpty() && arr[s.top()] >= arr[i] {
-				s.pop()
+func (f *fooBar) outFoo(sendCh, done <-chan bool) {
+	go func() {
+		for {
+			select {
+			case <-sendCh:
+				fmt.Printf("%s", f.foo)
+				select {
+				case f.barCh <- true:
+				}
+				<-f.fooCh
+			case <-done:
+				f.done <- true
 			}
-
 		}
-
-		if s.isEmpty() {
-			ans[i] = -1
-		} else {
-			ans[i] = s.top()
-		}
-
-		// push index
-		s.push(i)
-	}
-
-	fmt.Println(ans)
-
-	return ans
+	}()
 }
 
 func main() {
-	var (
-		loop int
-		d    int
-	)
-
-	fmt.Scanf("%d", &loop)
-
-	arr := make([]int, 0)
-	for i := 0; i < loop; i++ {
-		fmt.Scanf("%d", &d)
-		arr = append(arr, d)
+	n := 10
+	fb := fooBar{
+		foo:   "foo",
+		bar:   "bar",
+		barCh: make(chan bool),
+		fooCh: make(chan bool),
+		done:  make(chan bool),
 	}
-
-	greater := nextElement(arr, "G")
-	smaller := nextElement(arr, "S")
-
-	for i := 0; i < len(arr); i++ {
-		if greater[i] != -1 && smaller[greater[i]] != -1 {
-			fmt.Printf("%d ", arr[smaller[greater[i]]])
-		} else {
-			fmt.Printf("%d ", -1)
+	done := make(chan bool)
+	sendCh := make(chan bool)
+	fb.outBar()
+	fb.outFoo(sendCh, done)
+	forever := make(chan bool)
+	go func() {
+		for i := 0; i < n; i++ {
+			sendCh <- true
 		}
-	}
-	fmt.Println()
+
+		// time.Sleep(5 * time.Second)
+
+		select {
+		case done <- true:
+		}
+
+		forever <- true
+	}()
+	<-forever
 }
