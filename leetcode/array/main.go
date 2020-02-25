@@ -1,57 +1,53 @@
 package main
 
-import "fmt"
-
 func main() {
-	/*
-		a1 := []int{1, 2, 3, 0, 0, 0, 0}
-		a2 := []int{2, 4, 6, 7}
-	*/
-	fmt.Printf("%d\n", missingNumber([]int{2}))
+	//a := []int{1, 100, 1, 1, 1, 100, 1, 1, 100, 1}
+	//fmt.Printf("%d\n", minCostClimbingStairs(a))
+
+	m := [][]int{[]int{1, 2, 3, 4}, []int{5, 1, 2, 3}, []int{9, 5, 1, 2}}
+
+	//m := [][]int{[]int{1, 2}, []int{2, 1}}
+	isToeplitzMatrix(m)
 }
 
-func containsNearbyDuplicate(nums []int, k int) bool {
-	hash := make(map[int]int, 0)
-	n := len(nums)
+/*
+arr[i] = 2
+j = 1
+arr[j] = 3
+arr[j+1] = 2
 
-	for i := 0; i < n; i++ {
-		if _, ok := hash[nums[i]]; ok {
-			if i-hash[nums[i]] == k {
-				fmt.Printf("%v\n", hash)
+j = 0
+arr[i] = 2
+arr[j] = 3
+arr[j+1] = 3
 
-				return true
-			}
-		}
-		hash[nums[i]] = i
-	}
 
-	fmt.Printf("%v -- returning false\n", hash)
-	return false
-}
 
-func plusOne(arr []int) []int {
-	n := len(arr)
-	inc := 1
 
-	for i := n - 1; i >= 0; i-- {
-		arr[i] += inc
-		if arr[i] >= 10 {
-			arr[i] -= 10
-			continue
-		}
-		inc = 0
-		break
-	}
+3, 4, 2, 3
+3, 2, 4, 3
+2, 3, 4, 3
+2, 3, 3, 4
+             i	    e
+[2, 6, 6, 4, 8, 10, 9, 12, 14, 15]
+    s	     j
 
-	var res []int
 
-	if inc == 1 {
-		res = []int{1}
-		for _, i := range arr {
-			res = append(res, i)
-		}
-	} else {
-		res = arr
-	}
-	return res
-}
+s=1
+e=-1
+    s
+[1, 3, 2, 4, 5]
+
+ s=0
+ e=-1
+[3, 2, 4, 5]
+
+s=0
+e=2
+       e
+[1, 2, 3, 5, 4, 4]
+
+
+[T, T, T, F, T,  T, F,  T]
+
+*/
