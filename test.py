@@ -1,18 +1,14 @@
-def maxProfit(prices):
-    minPrice = float('inf')
-    profitArr = []
-    maxProfit = 0
-    i = 0
-    while i < len(prices):
-        if (prices[i] < minPrice):
-            minPrice = prices[i]
-        else:
-            profitArr.append(prices[i]-minPrice)
-            minPrice = prices[i]
-        i += 1
+def printPairs(arr, arr_size, sum): 
+      
+    # Create an empty hash set 
+    s = set() 
+      
+    for i in range(0, arr_size): 
+        temp = sum-arr[i] 
+        if (temp in s): 
+            print "Pair with given sum "+ str(sum) + " is (" + str(arr[i]) + ", " + str(temp) + ")"
+        s.add(arr[i])
+        print s        
 
-    print profitArr
-
-    return sum(profitArr)
-
-maxProfit([3, 3, 5, 0, 0, 3, 1, 4])
+l = [3, 1, 4, 1, 5]
+printPairs(l, len(l), 2)
