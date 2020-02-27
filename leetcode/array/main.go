@@ -3,6 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	a := []int{7, 7, 7, 7, 7, 7, 7}
-	fmt.Printf("%d\n", numOfSubarrays(a, 7, 7))
+	a := []string{"/a", "/a/b", "/c/d", "/c/d/e", "/c/f"}
+	fmt.Printf("%v\n", removeSubFolders(a))
 }

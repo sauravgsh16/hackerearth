@@ -23,12 +23,14 @@ func minCostClimbingStairs(cost []int) int {
 	return min(dp[n-2], dp[n-1])
 }
 
+/*
 func min(a, b int) int {
 	if a < b {
 		return a
 	}
 	return b
 }
+*/
 
 func isToeplitzMatrix(matrix [][]int) bool {
 	r, c := len(matrix), len(matrix[0])
