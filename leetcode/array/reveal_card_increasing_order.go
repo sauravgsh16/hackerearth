@@ -1,23 +1,5 @@
 package main
 
-import (
-	"sort"
-)
-
-func deckRevealedIncreasing(deck []int) []int {
-	// index skip implementation
-	n := len(deck)
-
-	sort.Ints(deck)
-
-	result := make([]int, n)
-	result[0] = deck[0]
-
-	for i := 1; i < n; i++ {
-
-	}
-}
-
 func deckRevealedIncreasingQueueImplementation(deck []int) []int {
 	queue := []int{}
 	cards := make([]int, 1000001)

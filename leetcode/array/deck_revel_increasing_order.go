@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -33,8 +32,6 @@ func deckRevealedIncreasing(deck []int) []int {
 			}
 		}
 		result[j] = deck[i]
-
-		fmt.Printf("%v\n", result)
 	}
 	return result
 }
