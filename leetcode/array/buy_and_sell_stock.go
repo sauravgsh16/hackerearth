@@ -2,20 +2,20 @@ package main
 
 import "fmt"
 
-func buyAndSellStock(p []int) int {
+func buyAndSellStock(prices []int) int {
 	/*
 		Using Kadane's algorithm
 	*/
 
 	minBuying := 10000000
 	maxProfit := 0
-	n := len(p)
+	n := len(prices)
 
 	for i := 0; i < n; i++ {
-		current := p[i]
+		current := prices[i]
 
-		if p[i] < minBuying {
-			minBuying = p[i]
+		if current < minBuying {
+			minBuying = current
 		}
 
 		var profit int

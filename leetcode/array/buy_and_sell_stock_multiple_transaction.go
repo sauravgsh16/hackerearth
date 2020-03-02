@@ -1,17 +1,17 @@
 package main
 
 // 2, 30, 15, 10, 8, 25, 80
-func maxProfit(p []int) int {
-	n := len(p)
+func maxProfit(prices []int) int {
+	n := len(prices)
 	minPrice := 1000000
 	profit := []int{}
 
 	for i := 0; i < n; i++ {
-		if p[i] < minPrice {
-			minPrice = p[i]
+		if prices[i] < minPrice {
+			minPrice = prices[i]
 		} else {
-			profit = append(profit, p[i]-minPrice)
-			minPrice = p[i]
+			profit = append(profit, prices[i]-minPrice)
+			minPrice = prices[i]
 		}
 	}
 	s := 0
