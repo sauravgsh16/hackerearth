@@ -79,4 +79,23 @@ def corpFlightBookings(bookings, n):
         res[i] += res[i - 1]
     return res[:-1]
 
-print corpFlightBookings([[1, 2, 10], [2, 3, 20], [2, 5, 25]], 5)
+#print corpFlightBookings([[1, 2, 10], [2, 3, 20], [2, 5, 25]], 5)
+
+
+
+def rankTeams(votes):
+    keys = {c: [0] * len(votes[0]) + [c] for c in votes[0]}
+
+    print keys
+
+    for vote in votes:
+        for i, c in enumerate(vote):
+            keys[c][i] -= 1
+    print keys
+    print sorted(votes[0], key=keys.get)
+
+    print keys.get("A")
+
+    return ''.join(sorted(votes[0], key=keys.get))
+
+rankTeams(["ABC","ACB","ABC","ACB","ACB"])
