@@ -66,4 +66,17 @@ def printSubsequences(arr, n) :
           
         print
 
-printSubsequences([1, 2, 3], 3)
+# printSubsequences([1, 2, 3], 3)
+
+def corpFlightBookings(bookings, n):
+    res = [0] * (n + 1)
+    for i, j, k in bookings:
+        res[i - 1] += k
+        res[j] -= k
+
+    print res
+    for i in xrange(1, n):
+        res[i] += res[i - 1]
+    return res[:-1]
+
+print corpFlightBookings([[1, 2, 10], [2, 3, 20], [2, 5, 25]], 5)

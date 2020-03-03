@@ -1,13 +1,15 @@
 package main
 
-func main() {
-	/*
+import "fmt"
 
-		fmt.Printf("%v\n", removeSubFolders(a))
-	*/
-	a := []int{1, 3, 2, 8, 4, 9}
-	//fmt.Printf("%d\n", )
-	maxProfitWithFee(a, 2)
+func main() {
+	a := [][]int{
+		[]int{1, 3, 1},
+		[]int{1, 5, 1},
+		[]int{4, 2, 1},
+	}
+
+	fmt.Printf("%v\n", minPathSum(a))
 }
 
 func max(a, b int) int {
