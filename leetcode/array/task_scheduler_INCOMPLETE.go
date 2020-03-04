@@ -1,21 +1,33 @@
 package main
 
-func leastInterval(tasks []byte, n int) int {
-	count := make(map[byte]int, 0)
+import (
+	"math"
+)
 
-	for _, t := range tasks {
-		if _, ok := count[t]; !ok {
-			count[t] = 0
+func leastInterval(tasks []byte, k int) int {
+	n := len(tasks)
+	count := make([]int, 26)
+
+	max := 0
+	maxCounter := 0
+
+	for i := 0; i < n; i++ {
+		count[tasks[i]-'A']++
+
+		if count[tasks[i]-'A'] == max {
+			maxCounter++
+		} else if max < count[tasks[i]-'A'] {
+			max = count[tasks[i]-'A']
+			maxCounter = 1
 		}
-		count[t]++
 	}
 
-	max := len(count) * nl
-	result := make([]byte, max)
+	partialCount := max - 1
+	partialLenght := n - (maxCounter - 1)
+	emptySlots := partialCount * partialLenght
+	availableTasks := n - max*maxCounter
 
-	for k, v := range count {
-		for i := 0; i < v; i++ {
+	idles := math.Max(0, float64(emptySlots-availableTasks))
 
-		}
-	}
+	return int(idles)
 }

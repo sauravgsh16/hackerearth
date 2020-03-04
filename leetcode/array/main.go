@@ -3,9 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	a := []int{3, 1, 1, 3}
-	// votes := []string{"ABC", "ACB", "ABC", "ACB", "ACB"}
-	fmt.Printf("%v\n", prevPermutation(a))
+	//a := []int{2, 2, 2, 3}
+	words := []string{"a", "bb", "acda", "acae"}
+	fmt.Printf("%v\n", numMatchingSubseq("abcfdae", words))
+
 }
 
 func max(a, b int) int {
