@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func countSquares(arr [][]int) int {
 	r := len(arr)
 	c := len(arr[0])
@@ -24,6 +26,8 @@ func countSquares(arr [][]int) int {
 			}
 		}
 	}
+
+	fmt.Printf("%v\n", dp)
 
 	return sum
 }

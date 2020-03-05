@@ -22,3 +22,21 @@ func subsets(arr []int) [][]int {
 
 	return result
 }
+
+func subsetRecursive(arr []int) [][]int {
+	result := make([][]int, 0)
+
+	temp := []int{}
+	dfsSubset(arr, &result, temp, 0)
+	return result
+}
+
+func dfsSubset(arr []int, result *[][]int, path []int, start int) {
+	r := append([]int{}, path...)
+	*result = append(*result, r)
+
+	for i := start; i < len(arr); i++ {
+		t := append(path, arr[i])
+		dfsSubset(arr, result, t, i+1)
+	}
+}
