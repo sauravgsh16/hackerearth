@@ -24,5 +24,10 @@ func plusOne(arr []int) []int {
 	} else {
 		res = arr
 	}
-	return res
+
+	i := 0
+	for res[i] == 0 {
+		i++
+	}
+	return res[i:]
 }

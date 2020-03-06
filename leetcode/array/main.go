@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	a := []int{2, 9, 2, 5, 6}
+	a := []int{9, 9, 9, 9, 9}
 	/*
 		a := [][]int{
 			[]int{0, 1, 1, 1},
@@ -12,7 +12,7 @@ func main() {
 		}
 	*/
 	//words := []string{"a", "bb", "acda", "acae"}
-	fmt.Printf("%v\n", numSubarrayBoundedMax(a, 2, 8))
+	fmt.Printf("%v\n", plusOne(a))
 
 }
 
