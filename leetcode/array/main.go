@@ -6,17 +6,8 @@ import (
 
 func main() {
 
-	a := []int{2, 9, 2, 5, 6}
-
-	/*
-		a := [][]int{
-			[]int{0, 1, 1, 1},
-			[]int{1, 1, 1, 1},
-			[]int{0, 1, 1, 1},
-		}
-	*/
-	//words := []string{"a", "bb", "acda", "acae"}
-	fmt.Printf("%v\n", minIncrementForUnique(a))
+	a := []int{2, 0, 1}
+	fmt.Printf("%v\n", sortBalls(a))
 }
 
 func matchSubsequence(s string, words []string) int {
