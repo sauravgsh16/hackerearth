@@ -13,6 +13,7 @@ type fooBar struct {
 }
 
 func (f *fooBar) outBar() {
+
 	go func() {
 		for {
 			select {

@@ -1,13 +1,8 @@
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
 
-	a := []int{2, 0, 1}
-	fmt.Printf("%v\n", sortBalls(a))
+	//a := []int{10, 1, 7}
 }
 
 func matchSubsequence(s string, words []string) int {
@@ -46,4 +41,31 @@ func max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func grumpyOwner(cust []int, grumpy []int, x int) int {
+	n := len(cust)
+	count := 0
+
+	for i := 0; i < n; i++ {
+		if grumpy[i] == 0 {
+			count += cust[i]
+			cust[i] = 0
+		}
+	}
+
+	var max, i int
+	for i = 0; i < x; i++ {
+		max += cust[i]
+	}
+	sum := max
+
+	for j := i; j < n; j++ {
+		sum = sum + cust[j] - cust[j-x]
+		if sum > max {
+			max = sum
+		}
+	}
+
+	return count + max
 }
