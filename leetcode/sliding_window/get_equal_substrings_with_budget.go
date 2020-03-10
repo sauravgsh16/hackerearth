@@ -7,7 +7,27 @@ import (
 // "krpgjbjjznpzdfy"
 // "nxargkbydxmsgby"
 
+// Proper solution
+// For each iteration find the sum
 func equalSubstrings(s, t string, maxCost int) int {
+	n := len(s)
+	var left, right int
+	maxLenght := 0
+
+	for right = 0; right < n; right++ {
+		maxCost -= int(math.Abs(float64(int(s[right]) - int(t[right]))))
+		if maxCost < 0 {
+			maxCost += int(math.Abs(float64(int(s[left]) - int(t[left]))))
+			left++
+		}
+		if maxLenght < (right - left + 1) {
+			maxLenght = (right - left + 1)
+		}
+	}
+	return maxLenght
+}
+
+func equalSubstringsMySolution(s, t string, maxCost int) int {
 	maxlenght := 0
 	n := len(s)
 	i := 0
@@ -17,7 +37,7 @@ func equalSubstrings(s, t string, maxCost int) int {
 	for i < n {
 		val := int(math.Abs(float64(int(s[i]) - int(t[i]))))
 
-		if cost >= val {
+		if cost-val >= 0 {
 			cost -= val
 			count++
 		} else {
@@ -35,14 +55,11 @@ func equalSubstrings(s, t string, maxCost int) int {
 				count = 0
 				temp := maxCost
 				j := i
-				for j > 0 && temp >= 0 {
-					j--
-					val = int(math.Abs(float64(int(s[j]) - int(t[j]))))
-					if temp-val < 0 {
-						break
-					}
+				for j > 0 && temp-val >= 0 {
 					temp -= val
 					count++
+					j--
+					val = int(math.Abs(float64(int(s[j]) - int(t[j]))))
 				}
 				cost = temp
 			}

@@ -3,10 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	// a := "krpgjbjjznpzdfy"
-	// b := "nxargkbydxmsgby"
-
-	a := "npzdfy"
-	b := "xmsgby"
-	fmt.Printf("%d\n", equalSubstrings(a, b, 14))
+	//a := []int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1}
+	s := "AABABBA"
+	fmt.Printf("%d\n", characterReplacement(s, 1))
 }
