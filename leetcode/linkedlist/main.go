@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func main() {
 	/*
 			l7 := &ListNode{
@@ -31,26 +29,47 @@ func main() {
 		}
 	*/
 
-	l2 := &ListNode{
-		Val: 3,
-		// Next: l3,
+	l12 := &ListNode{
+		Val: 8,
+		//Next: l3,
 	}
-	l1 := &ListNode{
+	l11 := &ListNode{
 		Val:  2,
-		Next: l2,
+		Next: l12,
 	}
 
-	h := &ListNode{
-		Val:  1,
-		Next: l1,
+	h1 := &ListNode{
+		Val:  4,
+		Next: l11,
 	}
-	//fmt.Printf("%v\n")
-	head := reverseListIterative(h)
 
-	for head != nil {
-		fmt.Printf("%d\n", head.Val)
-		head = head.Next
-	}
+	/*
+				l22 := &ListNode{
+					Val: 3,
+				}
+
+				l21 := &ListNode{
+					Val:  4,
+					Next: l22,
+				}
+
+
+			h2 := &ListNode{
+				Val: 2,
+				//Next: l21,
+			}
+			//fmt.Printf("%v\n")
+			head := addTwoNumbers(h1, h2)
+		for head != nil {
+			fmt.Printf("%d\n", head.Val)
+			head = head.Next
+		}
+	*/
+
+	//t := createTree()
+	s := []int{1, 2, 4, 2, 8, 4, 2, 4}
+	//fmt.Printf("%t\n", )
+	kmpSearchString(h1, s)
 
 }
 
