@@ -3,34 +3,35 @@ package main
 import "fmt"
 
 func main() {
-	l7 := &ListNode{
-		Val: 1,
-		//Next: l5,
-	}
-	l6 := &ListNode{
-		Val:  5,
-		Next: l7,
-	}
-	l5 := &ListNode{
-		Val:  2,
-		Next: l6,
-	}
+	/*
+		l7 := &ListNode{
+			Val: 1,
+			//Next: l5,
+		}
+		l6 := &ListNode{
+			Val:  5,
+			Next: l7,
+		}
+		l5 := &ListNode{
+			Val:  2,
+			Next: l6,
+		}
+	*/
 	l4 := &ListNode{
-		Val:  9,
-		Next: l5,
+		Val: 5,
 	}
 
 	l3 := &ListNode{
-		Val:  1,
+		Val:  4,
 		Next: l4,
 	}
 
 	l12 := &ListNode{
-		Val:  5,
+		Val:  3,
 		Next: l3,
 	}
 	l11 := &ListNode{
-		Val:  7,
+		Val:  2,
 		Next: l12,
 	}
 
@@ -39,7 +40,9 @@ func main() {
 		Next: l11,
 	}
 
-	fmt.Printf("%v\n", nextLargerNodes(h1))
+	l4.Next = l11
+
+	fmt.Printf("%v\n", detectCycle(h1))
 }
 
 // ListNode of a linked list
