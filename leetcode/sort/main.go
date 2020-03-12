@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	/*
 			root1 := &TreeNode{
@@ -40,7 +42,9 @@ func main() {
 
 		fmt.Printf("%v\n", kClosest(arr, 2))
 	*/
-	run()
+	a := []int{4, 2, 1, 3}
+
+	fmt.Printf("%v\n", insertionSort(a))
 }
 
 // TreeNode of a tree
