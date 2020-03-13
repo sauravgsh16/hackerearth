@@ -3,46 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	/*
-		l7 := &ListNode{
-			Val: 1,
-			//Next: l5,
-		}
-		l6 := &ListNode{
-			Val:  5,
-			Next: l7,
-		}
-		l5 := &ListNode{
-			Val:  2,
-			Next: l6,
-		}
-	*/
-	l4 := &ListNode{
-		Val: 5,
-	}
+	var head *ListNode
 
-	l3 := &ListNode{
-		Val:  4,
-		Next: l4,
-	}
+	head = push(head, 5)
+	head = push(head, 20)
+	head = push(head, 4)
+	head = push(head, 3)
+	head = push(head, 30)
 
-	l12 := &ListNode{
-		Val:  3,
-		Next: l3,
-	}
-	l11 := &ListNode{
-		Val:  2,
-		Next: l12,
-	}
+	head = insertionSort(head)
 
-	h1 := &ListNode{
-		Val:  1,
-		Next: l11,
+	for head != nil {
+		fmt.Printf("%d ", head.val)
 	}
-
-	l4.Next = l11
-
-	fmt.Printf("%v\n", detectCycle(h1))
 }
 
 // ListNode of a linked list
